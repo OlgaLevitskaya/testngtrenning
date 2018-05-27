@@ -34,38 +34,38 @@ import java.nio.file.Path;
 public class Task3Test {
     private Path tmp;
 
-    @BeforeClass
+    @BeforeClass(alwaysRun = true)
     public void setUp() throws IOException {
         tmp = Files.createTempDirectory("test");
         System.out.println("Create directory " + tmp);
     }
 
-    @Test
+    @Test(groups = "positive")
     public void createFileSuccess1() throws IOException {
         createFile(tmp.toString(), "temp");
     }
 
-    @Test
+    @Test(groups = "positive")
     public void createFileSuccess2() throws IOException {
         createFile(tmp.toString(), "temp.txt");
     }
 
-    @Test(expectedExceptions = IOException.class)
+    @Test(groups = "negative", expectedExceptions = IOException.class)
     public void createFileNoDir() throws IOException {
         createFile(tmp + "123", "temp1");
     }
 
-    @Test(expectedExceptions = IOException.class)
+    @Test(groups = "negative", expectedExceptions = IOException.class)
     public void createFileWrongDir() throws IOException {
         createFile(null, "temp1");
     }
 
-    @Test
+    @Test(groups = "negative")
     public void createFileNameEmptyName() throws IOException {
         Assert.assertFalse(createFile(tmp.toString(), ""), "File create!!!");
     }
 
-    @AfterClass
+    @AfterClass (alwaysRun = true)
     public void tearDown() {
         if (tmp != null) tmp.toFile().deleteOnExit();
         System.out.println("Delete directory " + tmp);
