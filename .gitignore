@@ -1,0 +1,17 @@
+### Idea ###
+*.iml
+.idea
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+#maven
+target/
+build/
+*.iml
+
+#log
+*.log
+
