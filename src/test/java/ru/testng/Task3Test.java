@@ -1,4 +1,6 @@
+package ru.testng;
 
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -48,19 +50,19 @@ public class Task3Test {
         createFile(tmp.toString(), "temp.txt");
     }
 
-    @Test
+    @Test(expectedExceptions = IOException.class)
     public void createFileNoDir() throws IOException {
         createFile(tmp + "123", "temp1");
     }
 
-    @Test
+    @Test(expectedExceptions = IOException.class)
     public void createFileWrongDir() throws IOException {
         createFile(null, "temp1");
     }
 
     @Test
     public void createFileNameEmptyName() throws IOException {
-        createFile(tmp.toString(), "");
+        Assert.assertFalse(createFile(tmp.toString(), ""), "File create!!!");
     }
 
     @AfterClass
