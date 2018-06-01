@@ -31,12 +31,12 @@ public class DataProviderTest extends TestBase {
 
     @Test(dataProvider = "fileName")
     public void testDataProvider1(String fileName) {
-        createSuccessFile(getTmp().toString(), fileName);
+        createSuccessFile(getTmp(), fileName);
     }
 
     @Test(dataProvider = "loadUserFromFile")
     public void testDataProvider2(String fileName) {
-        createSuccessFile(getTmp().toString(), fileName);
+        createSuccessFile(getTmp(), fileName);
     }
 
 

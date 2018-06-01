@@ -11,8 +11,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 public class TestBase {
-    public Path getTmp() {
-        return tmp;
+    public String getTmp() {
+        return tmp.toString();
     }
 
     private Path tmp;

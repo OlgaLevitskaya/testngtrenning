@@ -12,12 +12,12 @@ import java.io.IOException;
 public class Task3Test extends TestBase {
     @Test(groups = "positive")
     public void createFileSuccess1() {
-        createSuccessFile(getTmp().toString(), "temp");
+        createSuccessFile(getTmp(), "temp");
     }
 
     @Test(groups = "positive")
     public void createFileSuccess2() {
-        createSuccessFile(getTmp().toString(), "temp.txt");
+        createSuccessFile(getTmp(), "temp.txt");
     }
 
     @Test(testName = "Создание файла по нсуществующей дирректории",
@@ -34,6 +34,6 @@ public class Task3Test extends TestBase {
 
     @Test(groups = "negative")
     public void createFileNameEmptyName() throws IOException {
-        createNegativeFile(getTmp().toString(), "");
+        createNegativeFile(getTmp(), "");
     }
 }
