@@ -1,7 +1,8 @@
 package ru.testng;
 
-import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import java.io.IOException;
 
 /**
  * Примеры
@@ -11,26 +12,28 @@ import org.testng.annotations.Test;
 public class Task3Test extends TestBase {
     @Test(groups = "positive")
     public void createFileSuccess1() {
-        Assert.assertTrue(createFile(getTmp().toString(), "temp"), "File isn't create!!!");
+        createSuccessFile(getTmp().toString(), "temp");
     }
 
     @Test(groups = "positive")
     public void createFileSuccess2() {
-        Assert.assertTrue(createFile(getTmp().toString(), "temp.txt"), "File isn't create!!!");
+        createSuccessFile(getTmp().toString(), "temp.txt");
+    }
+
+    @Test(testName = "Создание файла по нсуществующей дирректории",
+            expectedExceptions = IOException.class, groups = "negative")
+    public void createFileNoDir() throws IOException {
+        createNegativeFile(getTmp() + "123", "temp1");
+    }
+
+    @Test(testName = "Создание файла по дирректории = null",
+            expectedExceptions = IOException.class, groups = "negative")
+    public void createFileDirisNull() throws IOException {
+        createNegativeFile(null, "temp1");
     }
 
     @Test(groups = "negative")
-    public void createFileNoDir() {
-        Assert.assertFalse(createFile(getTmp() + "123", "temp1"), "File is create!!!");
-    }
-
-    @Test(groups = "negative")
-    public void createFileWrongDir() {
-        Assert.assertFalse(createFile(null, "temp1"), "File is create!!!");
-    }
-
-    @Test(groups = "negative")
-    public void createFileNameEmptyName() {
-        Assert.assertFalse(createFile(getTmp().toString(), ""), "File is create!!!");
+    public void createFileNameEmptyName() throws IOException {
+        createNegativeFile(getTmp().toString(), "");
     }
 }

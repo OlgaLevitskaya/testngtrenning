@@ -1,6 +1,5 @@
 package ru.testng;
 
-import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -32,12 +31,12 @@ public class DataProviderTest extends TestBase {
 
     @Test(dataProvider = "fileName")
     public void testDataProvider1(String fileName) {
-        Assert.assertTrue(createFile(getTmp().toString(), fileName), "File isn't create!!!");
+        createSuccessFile(getTmp().toString(), fileName);
     }
 
     @Test(dataProvider = "loadUserFromFile")
     public void testDataProvider2(String fileName) {
-        Assert.assertTrue(createFile(getTmp().toString(), fileName), "File isn't create!!!");
+        createSuccessFile(getTmp().toString(), fileName);
     }
 
 
@@ -54,5 +53,4 @@ public class DataProviderTest extends TestBase {
         in.close();
         return userData.iterator();
     }
-
 }
